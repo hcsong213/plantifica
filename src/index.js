@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Landing from './pages/Landing';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
 
 
 ReactDOM.render(  
   <React.StrictMode>
-    <Landing />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

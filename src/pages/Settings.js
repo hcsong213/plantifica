@@ -1,12 +1,12 @@
 import CustomNavbar from "../components/CustomNavbar";
 
-function Achievements() {
+function Settings() {
     return (
         <div>
             <CustomNavbar/>
-            <h1>This is the Landing Page!</h1>
+            <h1>This is the Settings Page!</h1>
         </div>
     )
 }
 
-export default Achievements;
+export default Settings;

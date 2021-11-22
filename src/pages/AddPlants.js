@@ -1,7 +1,11 @@
+import CustomNavbar from "../components/CustomNavbar";
 
 function AddPlants() {
     return (
-        <h1>This is the Adding Plants Page!</h1>
+        <div>
+            <CustomNavbar/>
+            <h1>This is the Plant Search Page!</h1>
+        </div>
     )
 }
 
