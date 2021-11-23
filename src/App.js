@@ -8,6 +8,7 @@ import {
 import Account from './pages/Account';
 import AddPlants from './pages/AddPlants';
 import Achievements from './pages/Achievements';
+import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 
@@ -16,7 +17,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          {/* TODO: Route to Landing if not logged in */}
+          <Route path="/" element={<Home />} />
           <Route path="new-account" element={<Account />} />
           <Route path="achievements" element={<Achievements />} />
           <Route path="profile" element={<Profile />} />
