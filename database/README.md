@@ -16,3 +16,5 @@ common categories such as genus name, life cycle, etc. thus providing us with a 
 that are relevant to the user.
 
 To generate images for the plants so we can populate them in our site, I used images with Creative Commons (CC) licenses. 
+
+These entries were then uploaded to our Plantifica Firebase so they can be used and rendered in our app in the manner of an API.
