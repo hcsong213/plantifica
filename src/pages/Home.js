@@ -3,13 +3,19 @@ import Button from 'react-bootstrap/Button';
 import CustomNavbar from "../components/CustomNavbar";
 
 function Home() {
+
+    var divStyle = {
+        padding: "20px",
+        margin: "20px"
+    };
+
     return (
         <div>
             <CustomNavbar />
             <Container fluid>
-                <Row className="justify-content-md-center align-me">
+                <Row className="justify-content-md-center align-me" style={divStyle}>
                     <Col md="auto">
-                        <h1>Plantifica</h1>
+                        <h1>plantifica</h1>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center align-me">

@@ -37,6 +37,11 @@ function Profile() {
                         <h2>email</h2>
                     </Col>
                 </Row>
+                <Row className="justify-content-md-center align-me" style={divStyle}>
+                    <Col md="auto">
+                        <h1>achievements</h1>
+                    </Col>
+                </Row>
             </Container>
             <div className="profile">
 
