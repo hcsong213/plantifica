@@ -5,7 +5,7 @@
 Our team was having trouble finding plant database APIs online that we could use that was in Python.
 We found one called Trello that is now depreciated and no longer in use.
 
-Instead, we decided to build our own database for the purposes of this small-scale project with about forty entries of common houseplants
+Instead, we decided to build our own database for the purposes of this small-scale project with about thirty-five entries of common houseplants
 that the users could choose from.
 
 I built the database from scratch by using common listings of houseplants from the following website: 
