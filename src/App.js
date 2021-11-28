@@ -30,10 +30,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-<<<<<<< HEAD
-=======
-          {/* TODO: Route to Landing if not logged in */}
->>>>>>> d1cc953ab42a04ceab87fca748c4ba263e818a3c
           <Route path="/" element={<Home />} onEnter={requireAuth} />
           <Route path="new-account" element={<Account />} onEnter={requireAuth} />
           <Route path="achievements" element={<Achievements />} onEnter={requireAuth} />
