@@ -18,3 +18,12 @@ that are relevant to the user.
 To generate images for the plants so we can populate them in our site, I used images with Creative Commons (CC) licenses. 
 
 These entries were then uploaded to our Plantifica Firebase so they can be used and rendered in our app in the manner of an API.
+
+##Achievement Badges
+
+These icons are displayed when a user fulfills one of the following achievements:
+
+Achievement 1: Welcome to Plantifica
+Achievement 2: Newbie (User has uploaded their first plant)
+Achievement 3: Rookie (User has uploaded three plants)
+Achievement 4: Carnivore (User has uploaded a Venus Fly Trap)
