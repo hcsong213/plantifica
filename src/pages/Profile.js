@@ -15,7 +15,7 @@ function Profile() {
             <Container fluid>
                 <Row className="justify-content-md-center align-me" style={divStyle}>
                     <Col md="auto">
-                        <h1>my profile</h1>
+                        <h1>about me</h1>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center align-me">

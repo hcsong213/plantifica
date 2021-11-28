@@ -45,7 +45,7 @@ function Home() {
                 <Row className="justify-content-md-center align-me">
                     <Col md="auto">
                         {/* link below to the account creation page*/}
-                    <Link to =""><h4>Create an Account</h4></Link>
+                    <Link to ="/new-account"><h4>Create an Account</h4></Link>
                     </Col>
                     <Col md="auto">
                     <Link to ="/login"><h4>Login</h4></Link>
