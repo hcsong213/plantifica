@@ -30,7 +30,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          {/* TODO: Route to Landing if not logged in */}
           <Route path="/" element={<Home />} onEnter={requireAuth} />
           <Route path="new-account" element={<Account />} onEnter={requireAuth} />
           <Route path="achievements" element={<Achievements />} onEnter={requireAuth} />
