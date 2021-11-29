@@ -15,10 +15,12 @@ function Profile() {
     }
   }, [user, loading]);
 
+  const displayName = "Please fix me"; // TODO: Fix display name
+
   return (
     <div>
       <CompleteNavbar />
-      <AuthLayout>
+      {user ? (
         <Container fluid>
           <Row className="justify-content-md-center align-me m-4 p-4">
             <Col md="auto">
@@ -29,7 +31,7 @@ function Profile() {
             <Col md="auto">
               <Avatar
                 color={"darkseagreen"}
-                name={user.displayName}
+                name={displayName}
                 size="200"
                 round={true}
               />
@@ -37,7 +39,7 @@ function Profile() {
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2>name: {user.displayName}</h2>
+              <h2>name: {displayName}</h2>
             </Col>
           </Row>
           <Row className="d-flex justify-content-center m-2">
@@ -51,7 +53,11 @@ function Profile() {
             </Col>
           </Row>
         </Container>
-      </AuthLayout>
+      ) : (
+        <div className="justify-content-md-center align-me text-center">
+          Please <a href="/login">log in</a> 🌱
+        </div>
+      )}
       <div className="profile"></div>
     </div>
   );

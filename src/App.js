@@ -26,20 +26,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} onEnter={requireAuth} />
-          <Route
-            path="new-account"
-            element={<Account />}
-            onEnter={requireAuth}
-          />
-          <Route
-            path="achievements"
-            element={<Achievements />}
-            onEnter={requireAuth}
-          />
-          <Route path="profile" element={<Profile />} onEnter={requireAuth} />
-          <Route path="settings" element={<Settings />} onEnter={requireAuth} />
-          <Route path="search" element={<AddPlants />} onEnter={requireAuth} />
+          <Route path="/" element={<Home />} />
+          <Route path="new-account" element={<Account />} />
+          <Route path="achievements" element={<Achievements />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="search" element={<AddPlants />} />
           <Route path="login" element={<Landing />} />
         </Routes>
       </BrowserRouter>

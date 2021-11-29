@@ -9,8 +9,11 @@ export default function AuthLayout({ children }) {
     <>
       {user ? (
         <div className="justify-content-md-center align-me text-center">
-          You're already logged in! We're so glad you're here :)) Click to{" "}
-          <a href="/">go back home</a> 🌱
+          <span>You're already logged in! We're so glad you're here :))</span>{" "}
+          <br />{" "}
+          <span>
+            Click to <a href="/">go back home</a> 🌱
+          </span>
         </div>
       ) : (
         children
