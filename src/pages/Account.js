@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmailAndPassword,
-  signInWithEmailAndPassword,
 } from "../firebase/config.js";
 import "./Account.css";
 
