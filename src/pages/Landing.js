@@ -12,11 +12,14 @@ function Landing() {
     margin: "20px"
   };
 
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
-  // const history = useNavigate();
+  const navigate = useNavigate();
+  const signIn = () => {
+    signInWithEmailAndPassword(email, password)
+    navigate('/profile');
+  };
   useEffect(() => {
     if (loading) {
       return;
@@ -31,9 +34,9 @@ function Landing() {
       <LoginNavbar />
       <div className="login">
         <div className="login__container">
-        <div className="d-flex justify-content-center" style={divStyle} >
-          <h1>Sign In</h1>
-        </div>
+          <div className="d-flex justify-content-center" style={divStyle} >
+            <h1>Sign In</h1>
+          </div>
           <input
             type="text"
             className="login__textBox"
@@ -50,16 +53,16 @@ function Landing() {
           />
           <button
             className="login__btn"
-            onClick={() => signInWithEmailAndPassword(email, password)}
+            onClick={signIn}
           >
             Login
           </button>
           {/* <div>
               <Link to="/reset">Forgot Password</Link>
             </div> */}
-           <div>
-              Don't have an account? <Link to="/new-account">Register</Link> now.
-            </div> 
+          <div>
+            Don't have an account? <Link to="/new-account">Register</Link> now.
+          </div>
         </div>
       </div>
     </div>
