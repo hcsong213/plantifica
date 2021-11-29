@@ -1,26 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Avatar from "react-avatar";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
-import CompleteNavbar from "../components/CompleteNavbar";
-import AuthLayout from "../layouts/AuthLayout";
+import { onAuthStateChanged } from "firebase/auth";
+import CompleteNavbar from "../components/CompleteNavbar"
+import { db, auth } from "../firebase/config.js";
 
 function Profile() {
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
-  useEffect(() => {
-    if (loading) {
-      return;
-    }
-  }, [user, loading]);
+  const [signedIn, setSignedIn] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
-  const displayName = "Please fix me"; // TODO: Fix display name
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setSignedIn(true);
+      async function fetchProfile() {
+        try {
+          const userDocument = await db
+            .collection('users')
+            .doc(auth.currentUser?.uid)
+            .get();
+          
+            setName(userDocument.data()?.name);
+            setEmail(userDocument.data()?.email);
+        } catch (err) {
+          console.log('userDocument.get Failed')
+        }
+      }
+      fetchProfile();
+    }
+  });
 
   return (
     <div>
       <CompleteNavbar />
-      {user ? (
+      {signedIn ? (
         <Container fluid>
           <Row className="justify-content-md-center align-me m-4 p-4">
             <Col md="auto">
@@ -31,7 +44,7 @@ function Profile() {
             <Col md="auto">
               <Avatar
                 color={"darkseagreen"}
-                name={displayName}
+                name={name}
                 size="200"
                 round={true}
               />
@@ -39,12 +52,12 @@ function Profile() {
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2>name: {displayName}</h2>
+              <h2>name: {name}</h2>
             </Col>
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2> email: {user.email}</h2>
+              <h2> email: {email}</h2>
             </Col>
           </Row>
           <Row className="justify-content-md-center align-me m-4 p-4">
