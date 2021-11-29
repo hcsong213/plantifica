@@ -36,6 +36,9 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await auth.createUserWithEmailAndPassword(email, password);
     const user = res.user;
+    user.updateProfile({
+      displayName: this.user.name,
+    });
     await db.collection("users").add({
       uid: user.uid,
       name,
