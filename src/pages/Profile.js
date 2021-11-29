@@ -4,6 +4,7 @@ import Avatar from "react-avatar";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CompleteNavbar from "../components/CompleteNavbar";
+import AuthLayout from "../layouts/AuthLayout";
 
 function Profile() {
   const auth = getAuth();
@@ -17,7 +18,7 @@ function Profile() {
   return (
     <div>
       <CompleteNavbar />
-      {user ? (
+      <AuthLayout>
         <Container fluid>
           <Row className="justify-content-md-center align-me m-4 p-4">
             <Col md="auto">
@@ -50,11 +51,7 @@ function Profile() {
             </Col>
           </Row>
         </Container>
-      ) : (
-        <div className="justify-content-md-center align-me text-center">
-          Please log in 🌱
-        </div>
-      )}
+      </AuthLayout>
       <div className="profile"></div>
     </div>
   );
