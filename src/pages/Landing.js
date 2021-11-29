@@ -4,6 +4,7 @@ import { auth, signInWithEmailAndPassword } from "../firebase/config.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Landing.css";
 import CompleteNavbar from "../components/CompleteNavbar";
+import GuestLayout from "../layouts/GuestLayout.js";
 
 function Landing() {
   const [email, setEmail] = useState("");
@@ -24,39 +25,42 @@ function Landing() {
   }, [user, loading]);
 
   return (
-    <div>
+    <>
       <CompleteNavbar />
-      <div className="login">
-        <div className="login__container">
-          <div className="d-flex justify-content-center m-4 p-4">
-            <h1>Sign In</h1>
-          </div>
-          <input
-            type="text"
-            className="login__textBox"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail Address"
-          />
-          <input
-            type="password"
-            className="login__textBox"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <button className="login__btn" onClick={signIn}>
-            Login
-          </button>
-          {/* <div>
+      <GuestLayout>
+        <div className="login">
+          <div className="login__container">
+            <div className="d-flex justify-content-center m-4 p-4">
+              <h1>Sign In</h1>
+            </div>
+            <input
+              type="text"
+              className="login__textBox"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
+            />
+            <input
+              type="password"
+              className="login__textBox"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <button className="login__btn" onClick={signIn}>
+              Login
+            </button>
+            {/* <div>
               <Link to="/reset">Forgot Password</Link>
             </div> */}
-          <div>
-            Don't have an account? <Link to="/new-account">Register</Link> now.
+            <div>
+              Don't have an account? <Link to="/new-account">Register</Link>{" "}
+              now.
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </GuestLayout>
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ import Avatar from "react-avatar";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CompleteNavbar from "../components/CompleteNavbar";
+import AuthLayout from "../layouts/AuthLayout";
 
 function Profile() {
   const auth = getAuth();
@@ -13,6 +14,8 @@ function Profile() {
       return;
     }
   }, [user, loading]);
+
+  const displayName = "Please fix me"; // TODO: Fix display name
 
   return (
     <div>
@@ -28,7 +31,7 @@ function Profile() {
             <Col md="auto">
               <Avatar
                 color={"darkseagreen"}
-                name={user.displayName}
+                name={displayName}
                 size="200"
                 round={true}
               />
@@ -36,7 +39,7 @@ function Profile() {
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2>name: {user.displayName}</h2>
+              <h2>name: {displayName}</h2>
             </Col>
           </Row>
           <Row className="d-flex justify-content-center m-2">
@@ -52,7 +55,7 @@ function Profile() {
         </Container>
       ) : (
         <div className="justify-content-md-center align-me text-center">
-          Please log in 🌱
+          Please <a href="/login">log in</a> 🌱
         </div>
       )}
       <div className="profile"></div>
