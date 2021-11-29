@@ -5,23 +5,12 @@ import Button from "react-bootstrap/Button";
 import { db } from "../firebase/config.js";
 import { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import PlantCard from "../components/PlantCard";
 
 // done: search filters thru input to return the right plant
 // todo: convert the snapshot into an array, and return the results using plantcards
 
-async function Search(plantInput) {
-  const plantRef = collection(db, "plants");
-  const plant = String(plantInput);
-  const q = query(plantRef, where("name", "==", plant));
-  const querySnapshot = await getDocs(q);
-  console.log("hi");
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
-    console.log("printed");
-    console.log(doc.data().name);
-  });
-  return;
-}
+
 
 function AddPlants() {
   const [value, setValue] = useState(),
@@ -31,7 +20,32 @@ function AddPlants() {
       console.log("The value is " + value);
       setValue();
     };
+  
+    const [plantReady, setPlantReady] = useState(false);
+    const [card, setCard] = useState([]);
 
+    const Search = async (plantInput) =>{
+      const plantRef = collection(db, "plants");
+      const plant = String(plantInput);
+      const q = query(plantRef, where("name", "==", plant));
+      const querySnapshot = await getDocs(q);
+      console.log("hi");
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        console.log("printed");
+        console.log(doc.data().name);
+        setCard({
+          name: doc.data().name,
+          rarity: "Common",
+          genus: doc.data().genus,
+          life: doc.data().cycle,
+          sun: doc.data().sun,
+          type: doc.data().type,
+          info: doc.data().specialInfo,
+        })
+      });
+      setPlantReady(true);
+    }
   return (
     <div>
       <CustomNavbar />
@@ -51,6 +65,11 @@ function AddPlants() {
             Submit
           </Button>
         </Form>
+      {plantReady ? (
+        <PlantCard rarity={card.rarity} name={card.name} genus={card.genus} life={card.life} sun={card.sun} type={card.type} info={card.info}/>
+      ) : (
+        <br />
+      )}
       </SideMarginLayout>
     </div>
   );
