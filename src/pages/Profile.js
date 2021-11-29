@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Avatar from "react-avatar";
 import { onAuthStateChanged } from "firebase/auth";
-import CompleteNavbar from "../components/CompleteNavbar"
+import CompleteNavbar from "../components/CompleteNavbar";
 import { db, auth } from "../firebase/config.js";
 
 function Profile() {
   const [signedIn, setSignedIn] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -16,14 +16,14 @@ function Profile() {
       async function fetchProfile() {
         try {
           const userDocument = await db
-            .collection('users')
+            .collection("users")
             .doc(auth.currentUser?.uid)
             .get();
-          
-            setName(userDocument.data()?.name);
-            setEmail(userDocument.data()?.email);
+
+          setName(userDocument.data()?.name);
+          setEmail(userDocument.data()?.email);
         } catch (err) {
-          console.log('userDocument.get Failed')
+          console.log("userDocument.get Failed");
         }
       }
       fetchProfile();
