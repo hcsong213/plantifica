@@ -26,4 +26,4 @@ These icons are displayed when a user fulfills one of the following achievements
 Achievement 1: Welcome to Plantifica
 Achievement 2: Newbie (User has uploaded their first plant)
 Achievement 3: Rookie (User has uploaded three plants)
-Achievement 4: Carnivore Special Achievement (User has uploaded a Venus Fly Trap)
+Achievement 4: Green Thumb (User has uploaded five plants)
