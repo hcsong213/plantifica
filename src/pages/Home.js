@@ -1,9 +1,14 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import CompleteNavbar from "../components/CompleteNavbar";
 
 function Home() {
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
+
   return (
     <div>
       <CompleteNavbar />
@@ -31,36 +36,38 @@ function Home() {
         <Row className="justify-content-md-center align-me">
           <Col md="auto">
             <h3>Ready to get started?</h3>
-            <h4>Make an account or login below:</h4>
+            {!user && <h4>Make an account or login below:</h4>}
           </Col>
         </Row>
         <br />
-        <Row className="justify-content-md-center align-me">
-          <Col md="auto">
-            {/* link below to the account creation page*/}
-            <Link to="/new-account">
-              <h4>Create an Account</h4>
-            </Link>
-          </Col>
-          <Col md="auto">
-            <Link to="/login">
-              <h4>Login</h4>
-            </Link>
-          </Col>
-        </Row>
-        <br />
-        <Row className="justify-content-md-center align-me">
-          <Col md="auto">
-            <Button variant="primary" size="lg" href="/profile">
-              Your Plants
-            </Button>
-          </Col>
-          <Col md="auto">
-            <Button variant="primary" size="lg" href="/search">
-              Find Plants
-            </Button>
-          </Col>
-        </Row>
+        {!user ? (
+          <Row className="justify-content-md-center align-me">
+            <Col md="auto">
+              {/* link below to the account creation page*/}
+              <Link to="/new-account">
+                <h4>Create an Account</h4>
+              </Link>
+            </Col>
+            <Col md="auto">
+              <Link to="/login">
+                <h4>Login</h4>
+              </Link>
+            </Col>
+          </Row>
+        ) : (
+          <Row className="justify-content-md-center align-me">
+            <Col md="auto">
+              <Button variant="primary" size="lg" href="/profile">
+                Your Plants
+              </Button>
+            </Col>
+            <Col md="auto">
+              <Button variant="primary" size="lg" href="/search">
+                Find Plants
+              </Button>
+            </Col>
+          </Row>
+        )}
       </Container>
     </div>
   );
