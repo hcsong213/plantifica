@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import firebase from "firebase/compat/app";
-require('firebase/compat/auth')
-require('firebase/compat/firestore')
+require("firebase/compat/auth");
+require("firebase/compat/firestore");
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "plantifica-2a015.appspot.com",
   messagingSenderId: "831596755835",
   appId: "1:831596755835:web:cb8a78181c96b6e52e9bde",
-  measurementId: "G-R7X37RCMGH"
+  measurementId: "G-R7X37RCMGH",
 };
 
 // Initialize Firebase

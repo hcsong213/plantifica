@@ -12,8 +12,8 @@ function AddPlants() {
         <Form>
           <Form.Group className="mb-3" controlId="PlantName">
             <Form.Label>Plant name</Form.Label>
-            <Form.Control type="text" placeholder="Enter a plant name" />
           </Form.Group>
+            <Form.Control type="text" placeholder="Enter a plant name" />
           <Button variant="primary" type="submit">
             Submit
           </Button>
