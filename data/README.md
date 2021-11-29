@@ -19,7 +19,7 @@ To generate images for the plants so we can populate them in our site, I used im
 
 These entries were then uploaded to our Plantifica Firebase so they can be used and rendered in our app in the manner of an API.
 
-##Achievement Badges
+## Achievement Badges
 
 These icons are displayed when a user fulfills one of the following achievements:
 

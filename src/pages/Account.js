@@ -2,7 +2,7 @@ import LoginNavbar from "../components/LoginNavbar";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from 'react-bootstrap';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     auth,
     registerWithEmailAndPassword,
@@ -14,16 +14,15 @@ function Account() {
     var divStyle = {
         padding: "30px",
     };
-
-
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
     const register = () => {
         if (!name) alert("Please enter name");
         registerWithEmailAndPassword(name, email, password);
+        navigate('/profile');
     };
     useEffect(() => {
         if (loading) return;
@@ -57,7 +56,7 @@ function Account() {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
                     />
-                    <button className="register__btn" onClick={register}>
+                    <button className="register__btn" onClick={register} href='/profile'>
                         Create Account
                     </button>
                     <div>
