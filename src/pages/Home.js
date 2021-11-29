@@ -4,16 +4,11 @@ import CustomNavbar from "../components/CustomNavbar";
 import { Link } from "react-router-dom";
 
 function Home() {
-  var divStyle = {
-    padding: "20px",
-    margin: "20px",
-  };
-
   return (
     <div>
       <CustomNavbar />
       <Container fluid>
-        <Row className="justify-content-md-center align-me" style={divStyle}>
+        <Row className="justify-content-md-center align-me m-4 p-4">
           <Col md="auto">
             <h1>welcome to plantifica!</h1>
           </Col>

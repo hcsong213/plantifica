@@ -11,9 +11,6 @@ import {
 import "./Account.css";
 
 function Account() {
-  var divStyle = {
-    padding: "30px",
-  };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -32,7 +29,7 @@ function Account() {
       <LoginNavbar />
       <div className="register">
         <div className="register__container">
-          <div className="d-flex justify-content-center" style={divStyle}>
+          <div className="d-flex justify-content-center p-5">
             <h1>Create your account</h1>
           </div>
           <input

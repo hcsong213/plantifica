@@ -6,11 +6,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "./Landing.css";
 
 function Landing() {
-  var divStyle = {
-    padding: "20px",
-    margin: "20px",
-  };
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -33,7 +28,7 @@ function Landing() {
       <LoginNavbar />
       <div className="login">
         <div className="login__container">
-          <div className="d-flex justify-content-center" style={divStyle}>
+          <div className="d-flex justify-content-center m-4 p-4">
             <h1>Sign In</h1>
           </div>
           <input
