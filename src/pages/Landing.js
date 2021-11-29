@@ -1,9 +1,9 @@
-import LoginNavbar from "../components/LoginNavbar";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../firebase/config.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Landing.css";
+import CompleteNavbar from "../components/CompleteNavbar";
 
 function Landing() {
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ function Landing() {
 
   return (
     <div>
-      <LoginNavbar />
+      <CompleteNavbar />
       <div className="login">
         <div className="login__container">
           <div className="d-flex justify-content-center m-4 p-4">

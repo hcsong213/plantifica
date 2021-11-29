@@ -1,4 +1,3 @@
-import LoginNavbar from "../components/LoginNavbar";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,6 +7,7 @@ import {
   registerWithEmailAndPassword,
 } from "../firebase/config.js";
 import "./Account.css";
+import CompleteNavbar from "../components/CompleteNavbar";
 
 function Account() {
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ function Account() {
   }, [user, loading]);
   return (
     <div>
-      <LoginNavbar />
+      <CompleteNavbar />
       <div className="register">
         <div className="register__container">
           <div className="d-flex justify-content-center p-5">

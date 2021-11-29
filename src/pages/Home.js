@@ -1,12 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import CustomNavbar from "../components/CustomNavbar";
 import { Link } from "react-router-dom";
+import CompleteNavbar from "../components/CompleteNavbar";
 
 function Home() {
   return (
     <div>
-      <CustomNavbar />
+      <CompleteNavbar />
       <Container fluid>
         <Row className="justify-content-md-center align-me m-4 p-4">
           <Col md="auto">

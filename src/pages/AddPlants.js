@@ -1,12 +1,12 @@
-import CustomNavbar from "../components/CustomNavbar";
 import Form from "react-bootstrap/Form";
 import SideMarginLayout from "../layouts/SideMarginLayout";
 import Button from "react-bootstrap/Button";
+import CompleteNavbar from "../components/CompleteNavbar";
 
 function AddPlants() {
   return (
     <div>
-      <CustomNavbar />
+      <CompleteNavbar />
       <SideMarginLayout>
         <h1>This is the Plant Search Page!</h1>
         <Form>

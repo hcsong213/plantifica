@@ -1,10 +1,10 @@
-import CustomNavbar from "../components/CustomNavbar";
+import CompleteNavbar from "../components/CompleteNavbar";
 import SideMarginLayout from "../layouts/SideMarginLayout";
 
 function Settings() {
   return (
     <div>
-      <CustomNavbar />
+      <CompleteNavbar />
       <SideMarginLayout>
         <h1>This is the Settings Page!</h1>
       </SideMarginLayout>

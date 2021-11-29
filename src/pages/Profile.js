@@ -1,9 +1,9 @@
-import CustomNavbar from "../components/CustomNavbar";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Avatar from "react-avatar";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import CompleteNavbar from "../components/CompleteNavbar";
 
 function Profile() {
   const auth = getAuth();
@@ -16,7 +16,7 @@ function Profile() {
 
   return (
     <div>
-      <CustomNavbar />
+      <CompleteNavbar />
       {user ? (
         <Container fluid>
           <Row className="justify-content-md-center align-me m-4 p-4">
