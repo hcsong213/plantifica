@@ -32,3 +32,7 @@ p {
   size: 16;
   font-weight: 400;
 }
+
+.clicky:hover {
+  cursor: pointer;
+}
