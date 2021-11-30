@@ -6,6 +6,30 @@ import { db, auth } from "../firebase/config.js";
 
 function PlantCard(props) {
   const [loaded, setLoaded] = useState(false);
+  const [image, setImage] = useState(null);
+  const [hasPlant, setHasPlant] = useState(false);
+  async function getPlantStatus() {
+
+    try {
+      const userDocument = await db
+        .collection("users")
+        .doc(auth.currentUser?.uid)
+        .get();
+
+      var plants = userDocument.data()?.plants;
+      var plantIdx = plants.indexOf(props.name);
+
+      if (plantIdx === -1) {
+        setHasPlant(false);
+      } else {
+        setHasPlant(true);
+      }
+    } catch (err) {
+      console.log("userDocument.get Failed");
+    }
+  }
+  getPlantStatus();
+
   async function updateProfile() {
     try {
       const userDocument = await db
@@ -14,17 +38,20 @@ function PlantCard(props) {
         .get();
 
       var plants = userDocument.data()?.plants;
+      var plantIdx = plants.indexOf(props.name);
 
-      console.log(plants);
-      plants.push(props.name);
+      if (plantIdx === -1) {
+        plants.push(props.name);
+        setHasPlant(true);
+      } else {
+        plants.splice(plantIdx, 1);
+        setHasPlant(false);
+      }
 
-      await db
-        .collection("users")
-        .doc(auth.currentUser?.uid)
-        .update({
-          numPlants: userDocument.data()?.numPlants + 1,
-          plants: plants,
-        });
+      await db.collection("users").doc(auth.currentUser?.uid).update({
+        numPlants: plants.length,
+        plants: plants,
+      });
     } catch (err) {
       console.log("userDocument.get Failed");
     }
@@ -32,12 +59,9 @@ function PlantCard(props) {
 
   console.log(props.image);
   return (
-    <Card bg="success" text="white" style={{ width: "18rem" }}>
-      <Card.Header>{props.rarity}</Card.Header>
-      <Card.Img
-        src={props.image}
-        
-      />
+    <Card bg={hasPlant? "success" : "primary"} text="light" style={{ width: "18rem" }}>
+      <Card.Header>{hasPlant ? "In Collection" : "Not in Collection"}</Card.Header>
+      <Card.Img src={props.image} />
       <Card.Title>{props.name}</Card.Title>
       <ListGroup>
         <ListGroup.Item>Genus Name: {props.genus}</ListGroup.Item>
@@ -46,8 +70,8 @@ function PlantCard(props) {
         <ListGroup.Item>Plant Type: {props.type}</ListGroup.Item>
         <ListGroup.Item>Special Info: {props.info}</ListGroup.Item>
       </ListGroup>
-      <Button variant="primary" onClick={() => updateProfile()}>
-        Add Plant/Remove Plant
+      <Button variant={hasPlant ? "danger" : "success"} onClick={() => updateProfile()}>
+        {hasPlant ? "Remove Plant" : "Add Plant"}
       </Button>
     </Card>
   );
