@@ -4,6 +4,7 @@ import Avatar from "react-avatar";
 import { onAuthStateChanged } from "firebase/auth";
 import CompleteNavbar from "../components/CompleteNavbar";
 import { db, auth } from "../firebase/config.js";
+import AchievementBadges from "../components/molecular/AchievementBadges";
 
 function Profile() {
   const [signedIn, setSignedIn] = useState(false);
@@ -64,6 +65,7 @@ function Profile() {
             <Col md="auto">
               <h1>achievements</h1>
             </Col>
+            <AchievementBadges />
           </Row>
         </Container>
       ) : (
