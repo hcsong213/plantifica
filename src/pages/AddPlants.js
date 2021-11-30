@@ -31,6 +31,7 @@ function AddPlants() {
         name: doc.data().name,
         rarity: "Common",
         genus: doc.data().genus,
+        image: doc.data().image,
         life: doc.data().cycle,
         sun: doc.data().sun,
         type: doc.data().type,
@@ -64,10 +65,12 @@ function AddPlants() {
             rarity={card.rarity}
             name={card.name}
             genus={card.genus}
+            image={card.image}
             life={card.life}
             sun={card.sun}
             type={card.type}
             info={card.info}
+
           />
         ) : (
           <br />
