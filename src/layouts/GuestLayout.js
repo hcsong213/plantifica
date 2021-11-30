@@ -9,7 +9,7 @@ import { getAuth } from "firebase/auth";
  * user to be undefined to render.
  **/
 
-export default function AuthLayout({ children }) {
+export default function GuestLayout({ children }) {
   const auth = getAuth();
   const [user] = useAuthState(auth);
 
