@@ -1,5 +1,5 @@
-import CustomNavbar from "../components/CustomNavbar";
 import Form from "react-bootstrap/Form";
+import CompleteNavbar from "../components/CompleteNavbar";
 import SideMarginLayout from "../layouts/SideMarginLayout";
 import Button from "react-bootstrap/Button";
 import { db } from "../firebase/config.js";
@@ -7,7 +7,6 @@ import { useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import PlantCard from "../components/PlantCard";
 
-// done: search filters thru input to return the right plant
 // todo: convert the snapshot into an array, and return the results using plantcards
 
 function AddPlants() {
@@ -43,7 +42,7 @@ function AddPlants() {
 
   return (
     <div>
-      <CustomNavbar />
+      <CompleteNavbar />
       <SideMarginLayout>
         <h1>Search for your plants below:</h1>
         <Form onSubmit={onFormSubmit}>
