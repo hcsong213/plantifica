@@ -18,15 +18,18 @@ function AddPlants() {
     };
 
   const [plantReady, setPlantReady] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
   const [card, setCard] = useState([]);
 
   const Search = async (plantInput) => {
+    setHasSearched(true);
     const plantRef = collection(db, "plants");
     const plant = String(plantInput);
     const q = query(plantRef, where("name", "==", plant));
     const querySnapshot = await getDocs(q);
-
+    console.log("EMPTY", querySnapshot.empty);
     querySnapshot.forEach((doc) => {
+      console.log("EXISTS", doc.exists());
       setCard({
         name: doc.data().name,
         rarity: "Common",
@@ -37,7 +40,8 @@ function AddPlants() {
         info: doc.data().specialInfo,
       });
     });
-    setPlantReady(true);
+
+    querySnapshot.empty ? setPlantReady(false) : setPlantReady(true);
   };
 
   return (
@@ -59,7 +63,7 @@ function AddPlants() {
             Submit
           </Button>
         </Form>
-        {plantReady ? (
+        {plantReady && (
           <PlantCard
             rarity={card.rarity}
             name={card.name}
@@ -69,8 +73,12 @@ function AddPlants() {
             type={card.type}
             info={card.info}
           />
-        ) : (
-          <br />
+        )}
+        {!plantReady && hasSearched && (
+          <p>
+            Uh oh! We couldn't find the plant you're looking for. Please ensure
+            that you spelled the plant properly.
+          </p>
         )}
       </SideMarginLayout>
     </div>
