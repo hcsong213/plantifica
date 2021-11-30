@@ -15,7 +15,7 @@ function AddPlants() {
     onInput = ({ target: { value } }) => setValue(value),
     onFormSubmit = (e) => {
       e.preventDefault();
-      setValue();
+
     };
 
   const [plantReady, setPlantReady] = useState(false);
@@ -31,7 +31,6 @@ function AddPlants() {
     querySnapshot.forEach((doc) => {
       setCard({
         name: doc.data().name,
-        // rarity: "Common",
         genus: doc.data().genus,
         image: doc.data().image,
         life: doc.data().cycle,
