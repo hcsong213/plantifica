@@ -16,6 +16,7 @@ function PlantCard(props) {
 
       var plants = userDocument.data()?.plants;
 
+      console.log(plants);
       plants.push(props.name);
 
       await db
