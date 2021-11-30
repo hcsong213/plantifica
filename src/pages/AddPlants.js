@@ -6,6 +6,7 @@ import { db } from "../firebase/config.js";
 import { useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import PlantCard from "../components/PlantCard";
+import AuthLayout from "../layouts/AuthLayout";
 
 // todo: convert the snapshot into an array, and return the results using plantcards
 
@@ -30,7 +31,7 @@ function AddPlants() {
     querySnapshot.forEach((doc) => {
       setCard({
         name: doc.data().name,
-        rarity: "Common",
+        // rarity: "Common",
         genus: doc.data().genus,
         image: doc.data().image,
         life: doc.data().cycle,
@@ -46,42 +47,47 @@ function AddPlants() {
   return (
     <div>
       <CompleteNavbar />
-      <SideMarginLayout>
-        <h1>Search for your plants below:</h1>
-        <Form onSubmit={onFormSubmit}>
-          <Form.Group className="mb-3" controlId="PlantName">
-            <Form.Label>Plant name</Form.Label>
-          </Form.Group>
-          <Form.Control
-            type="text"
-            placeholder="Enter a plant name"
-            value={value}
-            onChange={onInput}
-          />
-          <Button variant="primary" type="submit" onClick={() => Search(value)}>
-            Submit
-          </Button>
-        </Form>
-        {plantReady && (
-          <PlantCard
-            rarity={card.rarity}
-            name={card.name}
-            genus={card.genus}
-            image={card.image}
-            life={card.life}
-            sun={card.sun}
-            type={card.type}
-            info={card.info}
-
-          />
-        )}
-        {!plantReady && hasSearched && (
-          <p>
-            Uh oh! We couldn't find the plant you're looking for. Please ensure
-            that you spelled the plant properly.
-          </p>
-        )}
-      </SideMarginLayout>
+      <AuthLayout>
+        <SideMarginLayout>
+          <h1>Search for your plants below:</h1>
+          <Form onSubmit={onFormSubmit}>
+            <Form.Group className="mb-3" controlId="PlantName">
+              <Form.Label>Plant name</Form.Label>
+            </Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Enter a plant name"
+              value={value}
+              onChange={onInput}
+            />
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={() => Search(value)}
+            >
+              Submit
+            </Button>
+          </Form>
+          {plantReady && (
+            <PlantCard
+              rarity={card.rarity}
+              name={card.name}
+              genus={card.genus}
+              image={card.image}
+              life={card.life}
+              sun={card.sun}
+              type={card.type}
+              info={card.info}
+            />
+          )}
+          {!plantReady && hasSearched && (
+            <p>
+              Uh oh! We couldn't find the plant you're looking for. Please
+              ensure that you spelled the plant properly.
+            </p>
+          )}
+        </SideMarginLayout>
+      </AuthLayout>
     </div>
   );
 }
