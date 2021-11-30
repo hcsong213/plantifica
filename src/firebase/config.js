@@ -40,6 +40,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       name,
       authProvider: "local",
       email,
+      numPlants: 0,
+      plants: [],
     });
   } catch (err) {
     console.error(err);
