@@ -8,7 +8,6 @@ function PlantCard(props) {
   const [image, setImage] = useState(null);
   const [hasPlant, setHasPlant] = useState(false);
   async function getPlantStatus() {
-
     try {
       const userDocument = await db
         .collection("users")
@@ -57,10 +56,17 @@ function PlantCard(props) {
   }
 
   return (
-    <Card bg={hasPlant? "success" : "primary"} text="light" style={{ width: "18rem" }}>
-      <Card.Header>{hasPlant ? "In Collection" : "Not in Collection"}</Card.Header>
+    <Card
+      bg={hasPlant ? "success" : "light"}
+      text={hasPlant ? "light" : "dark"}
+      style={{ width: "18rem" }}
+      className="mt-5 mr-5 border-light shadow"
+    >
+      <Card.Header className="text-center">
+        {hasPlant ? "In Collection" : "Not in Collection"}
+      </Card.Header>
       <Card.Img src={props.image} />
-      <Card.Title>{props.name}</Card.Title>
+      <Card.Title className="p-1 text-center">{props.name}</Card.Title>
       <ListGroup>
         <ListGroup.Item>Genus Name: {props.genus}</ListGroup.Item>
         <ListGroup.Item>Life Cycle: {props.life}</ListGroup.Item>
@@ -68,7 +74,10 @@ function PlantCard(props) {
         <ListGroup.Item>Plant Type: {props.type}</ListGroup.Item>
         <ListGroup.Item>Special Info: {props.info}</ListGroup.Item>
       </ListGroup>
-      <Button variant={hasPlant ? "danger" : "success"} onClick={() => updateProfile()}>
+      <Button
+        variant={hasPlant ? "danger" : "success"}
+        onClick={() => updateProfile()}
+      >
         {hasPlant ? "Remove Plant" : "Add Plant"}
       </Button>
     </Card>

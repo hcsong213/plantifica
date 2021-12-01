@@ -7,6 +7,7 @@ import { useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import PlantCard from "../components/PlantCard";
 import AuthLayout from "../layouts/AuthLayout";
+import { Col, Row } from "react-bootstrap";
 
 // todo: convert the snapshot into an array, and return the results using plantcards
 
@@ -15,7 +16,6 @@ function AddPlants() {
     onInput = ({ target: { value } }) => setValue(value),
     onFormSubmit = (e) => {
       e.preventDefault();
-
     };
 
   const [plantReady, setPlantReady] = useState(false);
@@ -48,24 +48,27 @@ function AddPlants() {
       <CompleteNavbar />
       <AuthLayout>
         <SideMarginLayout>
-          <h1>Search for your plants below:</h1>
+          <h1 className="my-4">Search for your plants below:</h1>
           <Form onSubmit={onFormSubmit}>
-            <Form.Group className="mb-3" controlId="PlantName">
-              <Form.Label>Plant name</Form.Label>
-            </Form.Group>
-            <Form.Control
-              type="text"
-              placeholder="Enter a plant name"
-              value={value}
-              onChange={onInput}
-            />
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={() => Search(value)}
-            >
-              Submit
-            </Button>
+            <Row>
+              <Col>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter a plant name"
+                  value={value}
+                  onChange={onInput}
+                />
+              </Col>
+              <Col>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  onClick={() => Search(value)}
+                >
+                  Submit
+                </Button>
+              </Col>
+            </Row>
           </Form>
           {plantReady && (
             <PlantCard
@@ -85,6 +88,7 @@ function AddPlants() {
               ensure that you spelled the plant properly.
             </p>
           )}
+          <div id="spacer" className="mb-5" />
         </SideMarginLayout>
       </AuthLayout>
     </div>
