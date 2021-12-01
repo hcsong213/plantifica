@@ -34,9 +34,9 @@ function Profile() {
       <CompleteNavbar />
       <AuthLayout>
         <Container fluid>
-          <Row className="justify-content-md-center align-me m-4 p-4">
+          <Row className="justify-content-md-center align-me mt-4 p-4">
             <Col md="auto">
-              <h1>about me</h1>
+              <h1>About Me</h1>
             </Col>
           </Row>
           <Row className="justify-content-md-center align-me">
@@ -51,17 +51,17 @@ function Profile() {
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2>name: {name}</h2>
+              <h2>Name: {name}</h2>
             </Col>
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2> email: {email}</h2>
+              <h2> Email: {email}</h2>
             </Col>
           </Row>
           <Row className="justify-content-md-center align-me m-4 p-4">
             <Col md="auto">
-              <h1>achievements</h1>
+              <h1>Achievements</h1>
             </Col>
             <AchievementBadges user={user} />
           </Row>

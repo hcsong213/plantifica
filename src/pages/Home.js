@@ -15,7 +15,7 @@ function Home() {
       <Container fluid>
         <Row className="justify-content-md-center align-me m-4 p-4">
           <Col md="auto">
-            <h1>welcome to plantifica!</h1>
+            <h1>Welcome to Plantifica!</h1>
           </Col>
         </Row>
         <Row className="justify-content-md-center align-me">
@@ -57,12 +57,22 @@ function Home() {
         ) : (
           <Row className="justify-content-md-center align-me">
             <Col md="auto">
-              <Button variant="primary" size="lg" href="/profile">
+              <Button
+                variant="primary"
+                size="lg"
+                className="shadow"
+                href="/profile"
+              >
                 Your Plants
               </Button>
             </Col>
             <Col md="auto">
-              <Button variant="primary" size="lg" href="/search">
+              <Button
+                variant="primary"
+                size="lg"
+                className="shadow"
+                href="/search"
+              >
                 Find Plants
               </Button>
             </Col>
