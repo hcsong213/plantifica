@@ -13,6 +13,7 @@ function Profile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
+  const [numPlants, setNumPlants] = useState(0);
   const [plants, setPlants] = useState([]);
   const [cards, setCards] = useState([]);
   const [authState, setAuthState] = useState(false);
@@ -30,6 +31,7 @@ function Profile() {
           setName(userDocument.data()?.name);
           setEmail(userDocument.data()?.email);
           setPlants(userDocument.data()?.plants);
+          setNumPlants(userDocument.data()?.numPlants)
           plants.map(async (plantName) => {
             const plantRef = collection(db, "plants");
             const plant = String(plantName);
@@ -112,7 +114,7 @@ function Profile() {
             <Col md="auto">
               <h1>Achievements</h1>
             </Col>
-            <AchievementBadges user={user} />
+            <AchievementBadges numPlants={numPlants} />
           </Row>
           <Row className="justify-content-md-center align-me">
             <Col md="auto">
