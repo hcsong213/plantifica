@@ -5,36 +5,34 @@ import { onAuthStateChanged } from "firebase/auth";
 import CompleteNavbar from "../components/CompleteNavbar";
 import { db, auth } from "../firebase/config.js";
 import AchievementBadges from "../components/molecular/AchievementBadges";
+import AuthLayout from "../layouts/AuthLayout";
 
 function Profile() {
-  const [signedIn, setSignedIn] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState(null);
 
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
-      setSignedIn(true);
-      async function fetchProfile() {
-        try {
-          const userDocument = await db
-            .collection("users")
-            .doc(auth.currentUser?.uid)
-            .get();
+      try {
+        const userDocument = await db
+          .collection("users")
+          .doc(auth.currentUser?.uid)
+          .get();
 
-          setName(userDocument.data()?.name);
-          setEmail(userDocument.data()?.email);
-        } catch (err) {
-          console.log("userDocument.get Failed");
-        }
+        setUser(auth?.currentUser);
+        setName(userDocument.data()?.name);
+        setEmail(userDocument.data()?.email);
+      } catch (err) {
+        console.log("userDocument.get Failed");
       }
-      fetchProfile();
     }
   });
 
   return (
     <div>
       <CompleteNavbar />
-      {signedIn ? (
+      <AuthLayout>
         <Container fluid>
           <Row className="justify-content-md-center align-me m-4 p-4">
             <Col md="auto">
@@ -65,14 +63,10 @@ function Profile() {
             <Col md="auto">
               <h1>achievements</h1>
             </Col>
-            <AchievementBadges />
+            <AchievementBadges user={user} />
           </Row>
         </Container>
-      ) : (
-        <div className="justify-content-md-center align-me text-center">
-          Please <a href="/login">log in</a> 🌱
-        </div>
-      )}
+      </AuthLayout>
       <div className="profile"></div>
     </div>
   );
