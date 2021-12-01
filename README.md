@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Plantifica
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Plantifica is a web app that allows users to keep track of their plants and learn more about them! First, users can create an account and log in, then navigate to our plant search feature to find their plants. Once they find their desired plants, they can add them to their collection. These plants will be shown on their profile. Additionally, users will get achievements based on the plants they add to their collection. Plantifica's goal is to increase interest in growing plants at home!
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+If you have the Github link, clone the repo with:
 
-### `yarn start`
+    git clone https://github.com/hcsong213/plantifica.git
+    cd plantifica
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you have the repository tarball, run the following command in the same directory with the tarball:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    tar -xvf <tarball file>
+    cd plantifica
 
-### `yarn test`
+Now that you're in the repository, run the following commands to download the required packages and start the server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    yarn
+    yarn start
 
-### `yarn build`
+After running `yarn start`, the server will serve the app at `localhost:3000`. From here, you can start using the app!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Flow
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Here, we'll be going into more detail on the user flow. When users first use the site, they'll be directed to the home page. On the home page, they'll find a quick description of the app and links to create a new account or log into their existing account. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+On the Create New Account Page, users enter a display name, email, and password, and we create an account for them. We use Firebase to store their account information, as well as their plant collection and achievements. Through Firebase, we also enforce a six character minimum for passwords and prevent two users from having identical emails. Account creation is where our users upload data to the server (their name, email, and password). Having accounts and being able to log in is one of our unique features. 
 
-### `yarn eject`
+Once users create their account and log in, they are redirected to their profile, which shows their account info, their profile picture, their plants, and their achievements. At first their plants and achievements will be empty, but they can change that by searching for plants.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+When the user clicks on `Find Plants` in the navbar, we route them to our plant search page where they can search for the plants they own. They can type in the exact name of a plant into the search bar and click submit to search for a specific plant. If the plant is in our database, we show the plant, an image, and some details about the plant. Examples of plant names include `Venus Fly Trap`, `Aloe Vera`, and `Croton`.  They can choose to add the plant to their collection or remove it if they already have it in their colleciton. More details about our plant database are in the database README
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once users add plants to their collection, the plants will show up on their profile page. They can check these out by clicking on `Your Profile` in the navbar. Once certain criteria are met, users will also obtain certain achievements.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Plant Database
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Our team was having trouble finding plant database APIs online that we could use that was in Python.
+We found one called Trello that is now depreciated and no longer in use.
 
-## Learn More
+Instead, we decided to build our own database for the purposes of this small-scale project with about thirty-five entries of common houseplants
+that the users could choose from.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I built the database from scratch by using common listings of houseplants from the following website:
+(https://www.houseplantsexpert.com/a-z-list-of-house-plants.html)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I then consolidated information from the above website and the following database (https://garden.org/plants/) to create
+common categories such as genus name, life cycle, etc. thus providing us with a dataset of plants we could us, with common information about them
+that are relevant to the user.
 
-### Code Splitting
+To generate images for the plants so we can populate them in our site, I used images with Creative Commons (CC) licenses.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+These entries were then uploaded to our Plantifica Firebase so they can be used and rendered in our app in the manner of an API.
 
-### Analyzing the Bundle Size
+## Achievement Badges
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+These icons are displayed when a user fulfills one of the following achievements:
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Achievement 1: Welcome to Plantifica
+    Achievement 2: Newbie (User has uploaded their first plant)
+    Achievement 3: Rookie (User has uploaded three plants)
+    Achievement 4: Green Thumb (User has uploaded five plants)
