@@ -25,7 +25,7 @@ function Profile() {
             .collection("users")
             .doc(auth.currentUser?.uid)
             .get();
-  
+
           setUser(auth?.currentUser);
           setName(userDocument.data()?.name);
           setEmail(userDocument.data()?.email);
@@ -56,10 +56,9 @@ function Profile() {
         }
       }
     });
-  
+
     return unsubscribe;
-  }, [authState, plants])
-  
+  }, [authState, plants]);
 
   console.log("user: ", user);
 
