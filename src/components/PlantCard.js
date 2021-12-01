@@ -57,7 +57,6 @@ function PlantCard(props) {
     }
   }
 
-  console.log(props.image);
   return (
     <Card bg={hasPlant? "success" : "primary"} text="light" style={{ width: "18rem" }}>
       <Card.Header>{hasPlant ? "In Collection" : "Not in Collection"}</Card.Header>
