@@ -3,13 +3,12 @@ import { arrayUnion, updateDoc } from "firebase/firestore";
 import { Card, ListGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { db, auth } from "../firebase/config.js";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 function PlantCard(props) {
   const [image, setImage] = useState(null);
   const [hasPlant, setHasPlant] = useState(false);
-
   async function getPlantStatus() {
+
     try {
       const userDocument = await db
         .collection("users")
@@ -57,19 +56,10 @@ function PlantCard(props) {
     }
   }
 
-  const storage = getStorage();
-  getDownloadURL(ref(storage, props.image))
-    .then((url) => {
-      setImage(url);
-    })
-    .catch((error) => {
-      console.log("Image does not exist.");
-    });
-
   return (
     <Card bg={hasPlant? "success" : "primary"} text="light" style={{ width: "18rem" }}>
       <Card.Header>{hasPlant ? "In Collection" : "Not in Collection"}</Card.Header>
-      <Card.Img src={image} />
+      <Card.Img src={props.image} />
       <Card.Title>{props.name}</Card.Title>
       <ListGroup>
         <ListGroup.Item>Genus Name: {props.genus}</ListGroup.Item>
