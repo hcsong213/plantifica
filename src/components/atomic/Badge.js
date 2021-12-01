@@ -10,23 +10,22 @@ export default function Badge(props) {
   return (
     <div
       className={
-        "p-4 w-25 m-3 rounded text-center text-white " +
+        "py-5 w-25 m-3 rounded text-center text-white " +
         (props.earned ? "bg-success" : "bg-secondary")
       }
     >
       <Container fluid>
-        <Row className="justify-content-md-center align-me m-4 p-4">
+        <Row className="justify-content-md-center align-me mb-4">
           <Col md="auto">
-          {props.title}
+            <h3>{props.title}</h3>
           </Col>
         </Row>
         <Row className="justify-content-md-center align-me">
           <Col md="auto">
-          <img src={props.image} width="200px" height="200px" />
+            <img src={props.image} width="100px" height="100px" />
           </Col>
         </Row>
-        </Container>
+      </Container>
     </div>
-   
   );
 }
