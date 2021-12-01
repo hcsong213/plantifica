@@ -72,7 +72,6 @@ function AddPlants() {
           </Form>
           {plantReady && (
             <PlantCard
-              rarity={card.rarity}
               name={card.name}
               genus={card.genus}
               image={card.image}
