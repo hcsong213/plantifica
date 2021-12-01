@@ -11,7 +11,6 @@ function CustomNavbar(props) {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/profile">Your Profile</Nav.Link>
           <Nav.Link href="/search">Find Plants</Nav.Link>
-          <Nav.Link href="/settings">Settings</Nav.Link>
         </Nav>
         <Navbar.Text
           className="clicky"
