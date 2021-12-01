@@ -29,6 +29,8 @@ function Profile() {
     }
   });
 
+  console.log("user: ", user);
+
   return (
     <div>
       <CompleteNavbar />
