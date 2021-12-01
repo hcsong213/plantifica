@@ -107,7 +107,7 @@ function Profile() {
           </Row>
           <Row className="d-flex justify-content-center m-2">
             <Col md="auto">
-              <h2> Email: {email}</h2>
+              <h2>Email: {email}</h2>
             </Col>
           </Row>
           <Row className="justify-content-md-center align-me m-4 p-4">

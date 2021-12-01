@@ -65,7 +65,12 @@ function PlantCard(props) {
       <Card.Header className="text-center">
         {hasPlant ? "In Collection" : "Not in Collection"}
       </Card.Header>
-      <Card.Img src={props.image} />
+
+      {/* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; */}
+      <Card.Img src={props.image} style = {{objectFit:"contain", width:"100%", height:"10rem"}}/>
       <Card.Title className="p-1 text-center">{props.name}</Card.Title>
       <ListGroup>
         <ListGroup.Item>Genus Name: {props.genus}</ListGroup.Item>
