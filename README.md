@@ -2,6 +2,15 @@
 
 Plantifica is a web app that allows users to keep track of their plants and learn more about them! First, users can create an account and log in, then navigate to our plant search feature to find their plants. Once they find their desired plants, they can add them to their collection. These plants will be shown on their profile. Additionally, users will get achievements based on the plants they add to their collection. Plantifica's goal is to increase interest in growing plants at home!
 
+
+## Group Members
+
+    Catherine Hu hucatherine01@ucla.edu 
+    Bryan Song bryansong@g.ucla.edu 
+    Nikhil Suresh niksure24@g.ucla.edu 
+    James Dingle jdingle7@g.ucla.edu 
+    Dina Masri dinamasri@g.ucla.edu
+    
 ## Setup
 
 If you have the Github link, clone the repo with:
@@ -55,3 +64,5 @@ These icons are displayed when a user fulfills one of the following achievements
     Achievement 2: Rookie (User has uploaded their first plant)
     Achievement 3: Green Thumb (User has uploaded three plants)
     Achievement 4: Plant Master (User has uploaded five plants)
+
+
