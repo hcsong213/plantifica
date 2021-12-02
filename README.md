@@ -9,11 +9,6 @@ If you have the Github link, clone the repo with:
     git clone https://github.com/hcsong213/plantifica.git
     cd plantifica
 
-If you have the repository tarball, run the following command in the same directory with the tarball:
-
-    tar -xvf <tarball file>
-    cd plantifica
-
 Now that you're in the repository, run the following commands to download the required packages and start the server:
 
     yarn
